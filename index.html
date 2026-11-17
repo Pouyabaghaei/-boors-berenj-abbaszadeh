@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101812"><title>بورس برنج عباس‌زاده</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="brand"><div class="mark">🌾</div><div><h1>بورس برنج عباس‌زاده</h1><small>مدیریت هوشمند فروشگاه</small></div></div><div class="top"><span id="userLabel">مدیر فروشگاه</span><button class="ghost" id="logoutBtn">خروج</button></div></header>
+<main>
+<section id="loginView" class="login card">
+  <div class="logo">🌾</div><h2>ورود به سامانه</h2><p class="muted">برای ورود، حساب کاربری خود را وارد کنید.</p>
+  <label>نام کاربری<input id="loginUser" value="admin" autocomplete="username"></label>
+  <label>رمز عبور<input id="loginPass" type="password" value="admin123" autocomplete="current-password"></label>
+  <button id="loginBtn" class="primary wide">درخواست ورود</button>
+  <p class="hint">نسخه نمایشی: مدیر اولیه admin / رمز admin123</p>
+  <div id="loginMessage" class="message"></div>
+</section>
+<section id="pendingView" class="login card hidden"><div class="logo">⏳</div><h2>در انتظار تأیید مدیر</h2><p>درخواست ورود شما ثبت شد. فقط مدیر اصلی می‌تواند ورود را تأیید کند.</p><button id="cancelRequest" class="ghost wide">لغو درخواست</button></section>
+<section id="appView" class="hidden">
+<nav class="tabs">
+<button class="tab active" data-page="dashboard">داشبورد</button><button class="tab" data-page="sales">فاکتور فروش</button><button class="tab" data-page="products">کالاها و انبار</button><button class="tab" data-page="customers">مشتریان</button><button class="tab" data-page="users">کاربران</button><button class="tab" data-page="settings">تنظیمات</button>
+</nav>
+<section id="dashboard" class="page">
+<div class="welcome"><div><h2>داشبورد فروشگاه</h2><p class="muted">نمای کلی عملیات بورس برنج عباس‌زاده</p></div><span class="pill">نسخه اولیه</span></div>
+<div class="stats"><div class="stat"><small>تعداد کالا</small><b id="statProducts">۰</b></div><div class="stat"><small>تعداد مشتری</small><b id="statCustomers">۰</b></div><div class="stat"><small>فاکتورهای ثبت‌شده</small><b id="statInvoices">۰</b></div><div class="stat"><small>ارزش موجودی (ریال)</small><b id="statStock">۰</b></div></div>
+<div class="grid2"><div class="card"><h3>دسترسی سریع</h3><div class="quick"><button data-go="sales">＋ صدور فاکتور</button><button data-go="products">＋ افزودن کالا</button><button data-go="customers">＋ افزودن مشتری</button></div></div><div class="card"><h3>آخرین فاکتورها</h3><div id="recentInvoices" class="muted">هنوز فاکتوری ثبت نشده است.</div></div></div>
+</section>
+<section id="sales" class="page hidden">
+<div class="section-head"><h2>صدور فاکتور فروش</h2><button class="ghost" id="printInvoice">چاپ فاکتور</button></div>
+<div class="card formgrid">
+<label>نام مشتری<input id="invoiceCustomer" placeholder="نام و نام خانوادگی"></label><label>شماره همراه<input id="invoicePhone" inputmode="tel" placeholder="09xxxxxxxxx"></label>
+<label>کالا<select id="invoiceProduct"><option value="">انتخاب کالا</option></select></label><label>وزن / تعداد<input id="invoiceQty" type="number" min="0.001" step="0.001" placeholder="مثلاً ۵"></label>
+<label>قیمت واحد (ریال)<input id="invoicePrice" type="number" min="0" placeholder="قیمت هر کیلو یا واحد"></label><label>توضیحات<input id="invoiceNote" placeholder="اختیاری"></label>
+<div class="full"><button id="addLine" class="secondary">افزودن به فاکتور</button></div>
+</div>
+<div class="card"><h3>اقلام فاکتور</h3><div class="tablewrap"><table><thead><tr><th>کالا</th><th>مقدار</th><th>قیمت واحد</th><th>جمع (ریال)</th><th></th></tr></thead><tbody id="invoiceLines"><tr><td colspan="5" class="muted">هنوز کالایی اضافه نشده است.</td></tr></tbody></table></div>
+<div class="total"><span>جمع کل</span><b id="invoiceTotal">۰ ریال</b></div><button id="confirmInvoice" class="primary wide">تأیید و ثبت فاکتور</button><p class="hint">ارسال واقعی پیامک پس از اتصال پنل پیامکی یا درگاه سیم‌کارت فعال می‌شود.</p></div>
+</section>
+<section id="products" class="page hidden">
+<div class="section-head"><h2>کالاها و انبار</h2></div><div class="card formgrid">
+<label>نام کالا<input id="productName" placeholder="مثلاً برنج هاشمی"></label><label>گروه<select id="productGroup"><option>برنج</option><option>حبوبات</option><option>سایر</option></select></label>
+<label>موجودی (کیلو / عدد)<input id="productStock" type="number" min="0" step="0.001"></label><label>قیمت خرید واحد (ریال)<input id="productCost" type="number" min="0"></label><label>قیمت فروش واحد (ریال)<input id="productSell" type="number" min="0"></label>
+<div class="full"><button id="saveProduct" class="primary">ثبت کالا</button></div></div>
+<div class="card tablewrap"><table><thead><tr><th>نام کالا</th><th>گروه</th><th>موجودی</th><th>خرید</th><th>فروش</th></tr></thead><tbody id="productRows"></tbody></table></div>
+</section>
+<section id="customers" class="page hidden"><h2>مشتریان</h2><div class="card formgrid"><label>نام مشتری<input id="customerName"></label><label>شماره همراه<input id="customerPhone" inputmode="tel"></label><div class="full"><button id="saveCustomer" class="primary">ثبت مشتری</button></div></div><div class="card tablewrap"><table><thead><tr><th>نام</th><th>شماره همراه</th></tr></thead><tbody id="customerRows"></tbody></table></div></section>
+<section id="users" class="page hidden"><h2>مدیریت کاربران و درخواست‌ها</h2><div class="card formgrid"><label>نام کاربری<input id="newUsername"></label><label>نام نمایشی<input id="newDisplay"></label><label>رمز اولیه<input id="newPassword" type="password"></label><label>سطح دسترسی<select id="newRole"><option value="sales">فروش و مشتریان</option><option value="stock">انبار و خرید</option><option value="admin">مدیر سیستم</option></select></label><div class="full"><button id="createUser" class="primary">ایجاد کاربر</button></div></div><div class="card"><h3>درخواست‌های ورود</h3><div id="requestsList" class="muted">درخواستی وجود ندارد.</div></div><div class="card"><h3>کاربران ثبت‌شده</h3><div id="usersList"></div></div></section>
+<section id="settings" class="page hidden"><h2>تنظیمات و تجهیزات</h2><div class="grid2"><div class="card"><h3>اتصال تجهیزات</h3><ul><li>بارکدخوان USB/HID: قابل استفاده به‌صورت ورودی صفحه‌کلید در نسخه دسکتاپ.</li><li>ترازو: اتصال نیازمند مدل، پروتکل و پورت دستگاه است.</li><li>چاپگر حرارتی/معمولی: چاپ مرورگر در این نسخه آزمایشی.</li></ul></div><div class="card"><h3>پیامک</h3><p>دو روش مدنظر: پنل پیامکی و سیم‌کارت. برای ارسال واقعی باید سرویس‌دهنده و مجوزهای لازم پیکربندی شوند.</p></div><div class="card"><h3>پشتیبان‌گیری</h3><button id="exportData" class="secondary">خروجی گرفتن از اطلاعات (JSON)</button><label class="file">بازیابی اطلاعات<input id="importData" type="file" accept="application/json"></label></div><div class="card"><h3>درباره نسخه</h3><p>نسخه ۰.۱ آزمایشی — اطلاعات در همین مرورگر ذخیره می‌شوند و هنوز همگام‌سازی ابری/شبکه‌ای فعال نیست.</p></div></div></section>
+</section>
+</main><footer>بورس برنج عباس‌زاده · مدیریت هوشمند مغازه</footer><script src="app.js"></script>
+</body></html>

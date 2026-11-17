@@ -1,0 +1,10 @@
+{
+  "name": "بورس برنج عباس‌زاده",
+  "short_name": "بورس برنج",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b100d",
+  "theme_color": "#101812",
+  "lang": "fa",
+  "dir": "rtl"
+}
