@@ -1,0 +1,8 @@
+{
+  "appId": "com.abbaszadeh.boorsberenj",
+  "appName": "بورس برنج عباس‌زاده",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  }
+}
